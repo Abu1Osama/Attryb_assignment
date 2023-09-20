@@ -52,7 +52,7 @@ export const userLogoutSuccess = () => ({
   type: USER_LOGOUT,
 });
 
-export const userSignup = (name, email, password) => {
+export const userSignup = (name, email, password,navigate,setShowLogin) => {
   return (dispatch) => {
     dispatch(userSignupRequest());
 
@@ -63,18 +63,39 @@ export const userSignup = (name, email, password) => {
         password,
       })
       .then((res) => {
-        const user = res.data.User;
-        dispatch(userSignupSuccess(user));
+     
+        dispatch(userSignupSuccess(res.data));
+        setShowLogin(true)
+        toast.success("User Registerd successfully !", {
+          style: {
+            borderRadius: "50px",
+            background: "#000428",
+            color: "#ffffff",
+            padding: "1rem 1.5rem",
+            fontWeight: "600",
+          },
+        });
+        navigate("/auth")
       })
       .catch((error) => {
         dispatch(userSignupFailure(error.message));
+       
+        toast.error("User Already exist", {
+          style: {
+            borderRadius: "50px",
+            background: "#000428",
+            color: "#ffffff",
+            padding: "1rem 1.5rem",
+            fontWeight: "600",
+          },
+        });
       });
   };
 };
 
 
 
-export const userLogin = (email, password) => {
+export const userLogin = (email, password,navigate,location) => {
   return (dispatch) => {
     dispatch(userLoginRequest());
 
@@ -86,9 +107,12 @@ export const userLogin = (email, password) => {
       .then((res) => {
         const user = res.data.user;
         const token = res.data.token;
+        const DealerId = res.data.dealerId;
 
-        dispatch(userLoginSuccess(user));
+        dispatch(userLoginSuccess(res.data));
         localStorage.setItem("dealertoken", token);
+        localStorage.setItem("dealerid",DealerId );
+        console.log(res.data)
       }).then(()=>{
         toast.success("User Login successfully !", {
           style: {
@@ -98,18 +122,19 @@ export const userLogin = (email, password) => {
             padding: "1rem 1.5rem",
             fontWeight: "600",
           },
+         
         });
-        // navigate(location.state === null ? "/" : location.state, {
-        //   replace: true,
-        // });
+        navigate(location.state === null ? "/" : location.state, {
+          replace: true,
+        });
       })
       .catch((error) => {
         dispatch(userLoginFailure(error.message));
-        toast.error(error.response.data.error, {
+        toast.error("Wrong Credential", {
           style: {
             borderRadius: "50px",
             background: "#000428",
-            color: "#ffffff",
+            color: "#ffffff", 
             padding: "1rem 1.5rem",
             fontWeight: "600",
           },

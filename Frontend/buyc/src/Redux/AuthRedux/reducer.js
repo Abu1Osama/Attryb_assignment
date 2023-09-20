@@ -32,6 +32,7 @@ import {
           error: null,
           isLoading: false,
           isAuth: true,
+          token:action.payload.token
         };
   
       case USER_LOGOUT:
