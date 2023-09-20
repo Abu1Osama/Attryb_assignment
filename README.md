@@ -25,8 +25,8 @@ BUYC Web Application! is a web application designed to help dealers to  easily a
 
 ## Screenshots
 
-![Screenshot 1](Frontend/src/assest/one.png)
-![Screenshot 2](./src/assest/two.png)
+![Screenshot 1](Frontend/src/assets/one.png)
+![Screenshot 2](./src/assets/two.png)
 ![Screenshot 3](./src/assest/three.png)
 
 
