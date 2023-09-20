@@ -10,6 +10,15 @@
             border: 1px solid rgb(202, 202, 202);
             outline-color:#2a53ea;
             margin-right: 2px;
+            flex-grow: 2;
+            flex-wrap: wrap;
+            margin-bottom: 5px;
+        }
+        .filter-child{
+          flex-wrap: wrap;
+          display: flex;
+          gap: 5px;
+          align-items: center;
         }
       
                  
@@ -153,3 +162,17 @@
       }
 }
 
+@media screen and (max-width: 601px) {
+  #DealersCar.DealersCar{
+    .filter{
+      justify-content: center;
+      flex-wrap: wrap;
+      
+    }
+    .cars-data{
+      grid-template-columns: repeat((1,1fr));
+    }
+  }
+
+
+}

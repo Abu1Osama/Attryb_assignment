@@ -9,7 +9,6 @@ import { userLogout } from "../Redux/AuthRedux/action";
 
 function Navbar() {
   const token = localStorage.getItem("dealertoken") || "";
-  const {isAuth}=useSelector((store)=>store.authReducer)
   const dispatch = useDispatch();
   const [searchQuery, setSearchQuery] = useState("");
   const handleInputChange = (e) => {

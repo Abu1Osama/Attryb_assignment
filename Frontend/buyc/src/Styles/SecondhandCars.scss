@@ -1,6 +1,6 @@
 #SecondhandCars.SecondhandCars {
   display: grid;
-  grid-template-columns: 30% 69%;
+  grid-template-columns: 30% 67%;
   gap: 10px;
   padding: 5px;
   .formdata {
@@ -33,8 +33,9 @@
       .form-child2 {
         display: flex;
         justify-content: space-evenly;
-        border: 1px solid gray;
+        border: 1px solid rgb(218, 218, 218);
         padding: 10px;
+        border-radius: 4px;
       }
       input,
       select,
@@ -205,4 +206,14 @@
       }
     }
   }
+}
+
+@media screen and (max-width: 601px) {
+  #SecondhandCars.SecondhandCars{
+    grid-template-columns: 100%;
+    .cars-data{
+      grid-template-columns: repeat(1,1fr);
+    }
+  }
+
 }
